@@ -6,7 +6,7 @@ const dateEl = document.querySelector('.date');
 const toggle = document.querySelector('.toggle');
 
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-const Months = ["Jan", "Feb", "Mar", "Apr", "Jun", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
+const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
 
 toggle.addEventListener("click", (e) => {
     const html = document.querySelector('html')
@@ -24,6 +24,7 @@ function setTime() {
     const time = new Date();
     const month = time.getMonth();
     const day = time.getDay();
+    const date = time.getDate();
     const hours = time.getHours();
     const hoursForClock = hours % 12;
     const minutes = time.getMinutes();
@@ -35,7 +36,7 @@ function setTime() {
     secondEl.style.transform = `translate(-50%, -100%) rotate(${scale(seconds, 0, 59, 0, 360)}deg)`
 
     timeEl.innerHTML = `${hoursForClock}:${minutes < 10 ? `0${minutes}` : minutes} ${ampm}`
-
+    dateEl.innerHTML = `${days[day]}, ${months[month]} <span class = "circle">${date}</span> `
 }
 
 //https://stackoverflow.com/questions/10756313/javascript-jquery-map-a-range-of-numbers-to-another-range-of-numbers
